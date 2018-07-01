@@ -1,0 +1,9 @@
+﻿{
+  "OrderId": "0",
+  "TagType": "AutoIncrementTag",
+  "Options": {
+    "Has Leading Zero": true,
+    "Start From": 10,
+    "Skip": 2
+  }
+}

@@ -1,0 +1,33 @@
+﻿[
+  {
+    "Id": 0,
+    "OrderId": 0,
+    "Name": "Auto Increment",
+    "TagType": "AutoIncrementTag",
+    "Options": {
+      "Has Leading Zero": false,
+      "Start From": 13,
+      "Skip": 5
+    }
+  },
+  {
+    "Id": 1,
+    "OrderId": 1,
+    "Name": "String",
+    "TagType": "StringTag",
+    "Options": {
+      "Text": "Test"
+    }
+  },
+  {
+    "Id": 2,
+    "OrderId": 2,
+    "Name": "Find & Replace",
+    "TagType": "FindAndReplaceTag",
+    "Options": {
+      "Find What": "Some",
+      "Replace With": "",
+      "Match Word": false 
+    }
+  }
+]

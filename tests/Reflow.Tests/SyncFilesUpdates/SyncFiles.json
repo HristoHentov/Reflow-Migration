@@ -1,0 +1,50 @@
+﻿[
+  {
+    "Id": 0,
+    "OriginalName": "ExampleDocxFile",
+    "NewName": "ExampleDocxFile",
+    "Type": "docx",
+    "Size": "1 KB",
+    "Filtered": true
+  },
+  {
+    "Id": 1,
+    "OriginalName": "ExampleExeFile",
+    "NewName": "ExampleExeFile",
+    "Type": "exe",
+    "Size": "2 KB",
+    "Filtered": false
+  },
+  {
+    "Id": 2,
+    "OriginalName": "ExampleFileNoExtension",
+    "NewName": "ExampleFileNoExtension",
+    "Type": "NONE",
+    "Size": "0 KB",
+    "Filtered": false
+  },
+  {
+    "Id": 3,
+    "OriginalName": "ExampleSvgFile",
+    "NewName": "ExampleSvgFile",
+    "Type": "svg",
+    "Size": "0 KB",
+    "Filtered": false
+  },
+  {
+    "Id": 4,
+    "OriginalName": "ExampleTextDocument",
+    "NewName": "ExampleTextDocument",
+    "Type": "txt",
+    "Size": "0 KB",
+    "Filtered": false
+  },
+  {
+    "Id": 5,
+    "OriginalName": "ExampleZipFile",
+    "NewName": "ExampleZipFile",
+    "Type": "zip",
+    "Size": "2 KB",
+    "Filtered": true
+  }
+]

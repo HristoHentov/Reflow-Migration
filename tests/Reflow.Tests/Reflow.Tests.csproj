@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.3.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="GetFilesInDirSample01\" />
+    <Folder Include="GetFilesInDirSample02\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Reflow.Contract\Reflow.Contract.csproj" />
+    <ProjectReference Include="..\..\src\Reflow.Core\Reflow.Core.csproj" />
+    <ProjectReference Include="..\..\src\Reflow.Data\Reflow.Data.csproj" />
+    <ProjectReference Include="..\..\src\Reflow.Models\Reflow.Models.csproj" />
+  </ItemGroup>
+
+</Project>

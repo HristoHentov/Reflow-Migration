@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <Description>The core module of Reflow.</Description>
+    <Copyright>Hristo Hentov &amp; Teddy Radenkov</Copyright>
+    <RepositoryUrl>https://github.com/HristoHentov/Reflow-API</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>Reflow, File, Manager, Directory, Organization</PackageTags>
+    <PackageReleaseNotes>Migration to the .NET Core 2.0 Platform.</PackageReleaseNotes>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HLog" Version="1.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Reflow.Contract\Reflow.Contract.csproj" />
+    <ProjectReference Include="..\Reflow.Data\Reflow.Data.csproj" />
+    <ProjectReference Include="..\Reflow.Models\Reflow.Models.csproj" />
+  </ItemGroup>
+
+</Project>
