@@ -25,7 +25,7 @@ namespace Reflow.Contract.DTO
 
         public static Size Parse(string size)
         {
-            var props = size.Split("", StringSplitOptions.RemoveEmptyEntries);
+            var props = size.Split(" ", StringSplitOptions.RemoveEmptyEntries);
             Magnitude magnitudeValue;
             if(System.Enum.TryParse(props[1], true, out magnitudeValue))
             {
