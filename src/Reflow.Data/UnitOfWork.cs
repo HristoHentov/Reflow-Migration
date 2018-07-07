@@ -14,7 +14,9 @@ namespace Reflow.Data
 
         public UnitOfWork()
         {
-            //this.context = Data.Context;
+            //Poke lazy
+            var options = this.Options;
+            var tags = this.Tags;
         }
 
         public IRepository<ITagOption> Options
