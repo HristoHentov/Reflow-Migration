@@ -29,12 +29,14 @@ namespace Reflow.Models.RenamingTags
         }
 
         [JsonProperty("Start From")]
+        [ReflowOption]
         public int StartFrom { get; set; }
 
         [ReflowOption]
         public int Skip { get; set; }
 
         [JsonProperty("Has Leading Zero")]
+        [ReflowOption]
         public bool HasTrailingZero { get; set; }
 
 
