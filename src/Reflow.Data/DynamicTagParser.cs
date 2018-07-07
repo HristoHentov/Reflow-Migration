@@ -27,11 +27,6 @@ namespace Reflow.Data
             Load();
         }
 
-        public static void Poke()
-        {
-
-        }
-
         private static void RegisterTypeMappings()
         {
             _typeMappings.Add(typeof(Byte), new OptionDefaultSet { DefaultType = typeof(NumericBoxOption), DefaultValue = 0 });
