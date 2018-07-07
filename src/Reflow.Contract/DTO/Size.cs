@@ -23,7 +23,7 @@ namespace Reflow.Contract.DTO
 
         public long SizeInBytes { get; }
 
-        public Size Parse(string size)
+        public static Size Parse(string size)
         {
             var props = size.Split("", StringSplitOptions.RemoveEmptyEntries);
             Magnitude magnitudeValue;
