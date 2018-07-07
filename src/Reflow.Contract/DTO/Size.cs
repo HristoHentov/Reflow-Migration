@@ -1,8 +1,10 @@
 ﻿using System;
 using Reflow.Contract.Enum;
+using System.Diagnostics;
 
 namespace Reflow.Contract.DTO
 {
+    [DebuggerDisplay("{Amount} {Magnitude} ({SizeInBytes})")]
     public class Size : IComparable<Size>
     {
 

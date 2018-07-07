@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Reflow.Contract.DTO
 {
@@ -10,7 +12,7 @@ namespace Reflow.Contract.DTO
         {
             this.Id = id;
             this.OriginalName = originalName;
-            this.NewName = NewName;
+            this.NewName = originalName;
             this.Type = type;
             this.Size = Size.Parse(size);
             this.Selected = selected;
@@ -25,6 +27,7 @@ namespace Reflow.Contract.DTO
 
         public string Type { get; }
 
+        [JsonConverter(typeof(SizeConverter))]
         public Size Size { get; }
 
         public bool Selected { get; set; }
@@ -41,4 +44,32 @@ namespace Reflow.Contract.DTO
             return this.FullName.Equals(other.FullName);
         }
     }
+
+    public class SizeConverter : JsonConverter
+    {
+        public override bool CanConvert(Type objectType)
+        {
+            return objectType == typeof(String);
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            var size = new Size(0, Enum.Magnitude.B);
+
+            if(reader.TokenType != JsonToken.Null && reader.TokenType == JsonToken.String)
+            {
+                size = Size.Parse((string)(new JValue(reader.Value)));
+            }
+
+            return size;
+        }
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            var size = value as Size;
+            var result = $"{size.Amount} {size.Magnitude}";
+            writer.WriteValue(result);
+        }
+    }
+
 }
