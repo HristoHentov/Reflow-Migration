@@ -27,6 +27,11 @@ namespace Reflow.Data
             Load();
         }
 
+        public static void Poke()
+        {
+
+        }
+
         private static void RegisterTypeMappings()
         {
             _typeMappings.Add(typeof(Byte), new OptionDefaultSet { DefaultType = typeof(NumericBoxOption), DefaultValue = 0 });
@@ -80,12 +85,12 @@ namespace Reflow.Data
                     }
 
                 }
-                tagId += TagKey;
-
                 var tagName = (ReflowTagAttribute)tag.GetCustomAttribute(typeof(ReflowTagAttribute));
                 var attributeName = tagName?.Name ?? tag.Name;
 
                 _tags.Add(tagId, tag);
+
+                tagId += TagKey;
             }
         }
 
@@ -97,7 +102,7 @@ namespace Reflow.Data
                 OrderId = idx,
                 TagType = t.Value.Name,
                 Name = ((ReflowTagAttribute)t.Value.GetCustomAttribute(typeof(ReflowTagAttribute)))?.Name ?? t.Value.Name,
-                Options = _options.Where(o => (o.Key - t.Key) < TagKey).Select(o => o.Value).ToList()
+                Options = _options.Where(o => (o.Key - t.Key) < TagKey && (o.Key - t.Key) > 0).Select(o => o.Value).ToList()
             });
         }
 
