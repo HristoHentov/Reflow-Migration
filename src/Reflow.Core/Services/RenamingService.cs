@@ -99,10 +99,7 @@ namespace Reflow.Core.Services
 
         internal IEnumerable<ITagModel> GetTags()
         {
-            var allTags = _database.Tags.Entities.ToList();
-            //var options = _database.Options.Entities.ToList(); //tags dont get their options filled in if this is not present. Investigate
-
-            return allTags;
+            return _database.Tags.Entities.ToList();
         }
 
         public IEnumerable<IFilter> GetFilters()
@@ -318,12 +315,6 @@ namespace Reflow.Core.Services
             options.Add(new ReflowOption("Old files location", "Filepath", 0, new[] { Directory.GetCurrentDirectory().ToString() }));
 
             return options;
-        }
-
-        public string GetTagsTEMP()
-        {
-            return
-                "[{\"Id\":1,\"TagType\":\"AutoIncrementTagModel\",\"Options\":[{\"Id\":1,\"TagType\":\"HasLeadingZero\",\"Type\":\"CheckBox\"},{\"Id\":2,\"TagType\":\"StartFrom\",\"Type\":\"NumericBox\"},{\"Id\":3,\"TagType\":\"Skip\",\"Type\":\"NumericBox\"}]},{\"Id\":2,\"TagType\":\"String\",\"Options\":[{\"Id\":4,\"TagType\":\"Text\",\"Type\":\"TextBox\"}]},{\"Id\":3,\"TagType\":\"FileProperty\",\"Options\":[{\"Id\":5,\"TagType\":\"Property\",\"Type\":\"List\"},{\"Id\":6,\"TagType\":\"IfMissing\",\"Type\":\"List\"}]},{\"Id\":4,\"TagType\":\"Regex\",\"Options\":[{\"Id\":7,\"TagType\":\"Regex\",\"Type\":\"TextArea\"},{\"Id\":8,\"TagType\":\"EscapeRegex\",\"Type\":\"Toggle\"},{\"Id\":9,\"TagType\":\"RegexParams\",\"Type\":\"CheckList\"}]},{\"Id\":5,\"TagType\":\"Replace\",\"Options\":[{\"Id\":10,\"TagType\":\"FindWhat\",\"Type\":\"TextBox\"},{\"Id\":11,\"TagType\":\"ReplaceWith\",\"Type\":\"TextBox\"},{\"Id\":12,\"TagType\":\"MatchWord\",\"Type\":\"Toggle\"}]},{\"Id\":6,\"TagType\":\"Reverse\",\"Options\":[{\"Id\":13,\"TagType\":\"ReverseFrom\",\"Type\":\"NumericBox\"},{\"Id\":14,\"TagType\":\"RevrseTo\",\"Type\":\"NumericBox\"},{\"Id\":15,\"TagType\":\"RevrseEntireName\",\"Type\":\"Toggle\"}]},{\"Id\":7,\"TagType\":\"Random\",\"Options\":[{\"Id\":16,\"TagType\":\"RandomFrom\",\"Type\":\"NumericBox\"},{\"Id\":17,\"TagType\":\"RandomTo\",\"Type\":\"NumericBox\"},{\"Id\":18,\"TagType\":\"EncodeAsChar\",\"Type\":\"CheckBox\"},{\"Id\":19,\"TagType\":\"TotalCharacters\",\"Type\":\"NumericBox\"}]}]";
         }
 
         public IEnumerable<ITag> GetTagsInMemory()
