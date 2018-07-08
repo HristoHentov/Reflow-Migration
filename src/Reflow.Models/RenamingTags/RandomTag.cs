@@ -40,7 +40,7 @@ namespace Reflow.Models.RenamingTags
         {
             var rand = _rng.Next(RandomFrom, RandomTo);
             return EncodeAsChar 
-                ? ((char)((int) 'A' + (rand % (26 * 2)))).ToString() 
+                ? ((char)((int) 'A' + (rand % 26))).ToString() 
                 : rand.ToString();
         }
     }
