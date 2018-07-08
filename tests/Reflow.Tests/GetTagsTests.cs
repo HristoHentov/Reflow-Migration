@@ -20,7 +20,7 @@ namespace Reflow.Tests
             var apiResult = _reflow.GetTags(null).Result;
 
             var tagsJson = ParseUtils.ParseArray(apiResult);
-            tagsJson.Count.Should().Be(4);
+            tagsJson.Count.Should().Be(5);
         }
     }
 }
