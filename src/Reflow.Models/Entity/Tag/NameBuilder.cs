@@ -27,7 +27,7 @@ namespace Reflow.Models.Entity.Tag
             {
                 string newName = string.Empty;
                 foreach (var tag in Tags)
-                    newName += (tag.Render(file.Key, files));
+                    newName += (tag.Render(file.Value.OriginalName, files));
 
 
                 file.Value.NewName = newName;
