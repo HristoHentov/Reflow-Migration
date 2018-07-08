@@ -59,7 +59,7 @@ namespace Reflow.Models.RenamingTags
             if (files == null)
                 return 0;
 
-            var count = files.Values.Count(f => f.Selected);
+            var count = files.Count;
             var result = Math.Max(StartFrom, count * (Skip - 1) + StartFrom); // Not a good formula, but will do for now.
 
             return result.ToString().Length;
