@@ -17,6 +17,8 @@
   <ItemGroup>
     <Folder Include="GetFilesInDirSample01\" />
     <Folder Include="GetFilesInDirSample02\" />
+    <Folder Include="RenameFilesSample\02\FilesSet\" />
+    <Folder Include="RenameFilesSample\02\AssertFolder\" />
   </ItemGroup>
 
   <ItemGroup>

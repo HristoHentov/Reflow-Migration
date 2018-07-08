@@ -36,7 +36,7 @@ namespace Reflow.Tests
 
             FileIsCorrect(files, 0, "ExampleDocxFile", "docx");
             FileIsCorrect(files, 1, "ExampleExeFile", "exe");
-            FileIsCorrect(files, 2, "ExampleFileNoExtension", "NONE");
+            FileIsCorrect(files, 2, "ExampleFileNoExtension", "");
             FileIsCorrect(files, 3, "ExampleSvgFile", "svg");
             FileIsCorrect(files, 4, "ExampleTextDocument", "txt");
             FileIsCorrect(files, 5, "ExampleZipFile", "zip");
