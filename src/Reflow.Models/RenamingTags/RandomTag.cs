@@ -7,6 +7,7 @@ using Reflow.Contract.DTO;
 
 namespace Reflow.Models.RenamingTags
 {
+    [ReflowTag(Name = "Random")]
     public class RandomTag : BaseTag
     {
         private static readonly Random _rng = new Random();

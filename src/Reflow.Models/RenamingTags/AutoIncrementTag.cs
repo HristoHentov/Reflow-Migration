@@ -10,6 +10,7 @@ using Reflow.Contract.DTO;
 
 namespace Reflow.Models.RenamingTags
 { 
+    [ReflowTag(Name = "Auto Increment")]
     public class AutoIncrementTag : BaseTag
     {
         private int _lastValue;

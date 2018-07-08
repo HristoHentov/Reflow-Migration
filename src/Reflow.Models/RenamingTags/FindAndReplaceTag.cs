@@ -6,6 +6,7 @@ using Reflow.Contract.DTO;
 
 namespace Reflow.Models.RenamingTags
 {
+    [ReflowTag(Name = "Find & Replace")]
     public class FindAndReplaceTag : BaseTag
     {
         public FindAndReplaceTag(string name)

@@ -6,6 +6,7 @@ using Reflow.Contract.DTO;
 
 namespace Reflow.Models.RenamingTags
 {
+    [ReflowTag(Name = "String")]
     public class StringTag : BaseTag
     {
         public StringTag() : base(nameof(StringTag))
