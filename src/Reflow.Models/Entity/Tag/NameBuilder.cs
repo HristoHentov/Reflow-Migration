@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Reflow.Contract.Entity;
 using Reflow.Contract.DTO;
+using System.Text;
 
 namespace Reflow.Models.Entity.Tag
 {
@@ -22,17 +23,18 @@ namespace Reflow.Models.Entity.Tag
         public IList<ReflowFile> Resolve(IDictionary<string, ReflowFile> files)
         {
             var res = new List<ReflowFile>();
-
+            var sb = new StringBuilder();
             foreach (var file in files)
             {
-                string newName = string.Empty;
                 foreach (var tag in Tags)
-                    newName += (tag.Render(file.Value.OriginalName, files));
+                {
+                    sb.Append((tag.Render(file.Value.OriginalName, files)));
+                }
 
 
-                file.Value.NewName = newName;
+                file.Value.NewName = sb.ToString();
                 res.Add(file.Value);
-                
+                sb.Clear();
             }
             return res;
         }
