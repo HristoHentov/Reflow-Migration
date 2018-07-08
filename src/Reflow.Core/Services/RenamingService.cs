@@ -19,6 +19,8 @@ using Reflow.Models.Entity.Tag;
 using Reflow.Models.Internal;
 using Reflow.Contract.DTO;
 using Reflow.Models.RenamingTags;
+using Reflow.Contract.Files;
+using Reflow.Core.FileLayer;
 
 namespace Reflow.Core.Services
 {
@@ -27,6 +29,7 @@ namespace Reflow.Core.Services
         private readonly IUnitOfWork _database;
         private readonly IDataImporter _importer;
         private readonly IDictionary<string, Type> _tagTypes;
+        private readonly IFileLayer _fileLayer;
 
         private int _filesProgess;
         //private readonly IInMemoryRepository<Tag> _tags;
@@ -35,6 +38,7 @@ namespace Reflow.Core.Services
         {
             this._database = new UnitOfWork();
             this._importer = new JsonDataImporter();
+            this._fileLayer = new DefaultFileLayer();
             this._tagTypes = LoadTagsFromAssembly();
 
             this._filesProgess = 0;
@@ -57,7 +61,7 @@ namespace Reflow.Core.Services
         {
             try
             {
-                var inFiles = Directory.EnumerateFiles(path);
+                var inFiles = this._fileLayer.GetFilesInDirectory(path);
                 var files = new Dictionary<string, ReflowFile>();
 
                 var index = 0;
@@ -69,7 +73,7 @@ namespace Reflow.Core.Services
                         var fileModel = new ReflowFile(
                             id: index++,
                             originalName: fileName[0],
-                            type: fileName[1] ?? "NONE",
+                            type: fileName[1] ?? "",
                             size: GetFileSize(file),
                             selected: true
                             );
@@ -208,36 +212,12 @@ namespace Reflow.Core.Services
 
         private bool BackupFile(string filename, string fileType, string newLocation)
         {
-            try
-            {
-                var fullName = $"{filename}.{fileType}";
-
-                System.IO.File.Copy
-                           (Path.Combine(ReflowStateCache.WorkingDirectory, fullName),
-                             Path.Combine(newLocation, fullName));
-            }
-            catch (Exception e)
-            {
-                //Log.Error($"Failed moving file {filename} to {newLocation}. FileType {fileType}. Exception Message: {e.Message}");
-                throw new Exception($"Failed moving file {filename} to {newLocation}. FileType {fileType}. Exception Message: {e.Message}", e);
-            }
-            return true;
+            return this._fileLayer.Copy(ReflowStateCache.WorkingDirectory, newLocation, filename, fileType);
         }
 
         private bool RenameFile(string oldName, string newName, string fileType)
         {
-            try
-            {
-                System.IO.File.Move
-                           (Path.Combine(ReflowStateCache.WorkingDirectory, oldName + "." + fileType),
-                             Path.Combine(ReflowStateCache.WorkingDirectory, newName + "." + fileType));
-            }
-            catch (Exception e)
-            {
-                Log.Error($"Failed renaming file {oldName} to {newName}. FileType {fileType}. Exception Message: {e.Message}");
-                return false;
-            }
-            return true;
+            return this._fileLayer.Rename(ReflowStateCache.WorkingDirectory, oldName, newName, fileType);
         }
 
         public bool AddTag(string json)
@@ -318,8 +298,7 @@ namespace Reflow.Core.Services
         }
 
         public IEnumerable<ITag> GetTagsInMemory()
-        {
-            //return _tags.Load();
+        {            
             return null;
         }
 
